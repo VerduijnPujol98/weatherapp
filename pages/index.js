@@ -8,6 +8,9 @@ import Lottie from "lottie-react";
 import cloudanimation from '../components/102873-clouds-loop.json'
 import partlycloudy from '../components/50651-cloudy.json'
 import patchyrain from '../components/50653-the-rain-turned-fine.json'
+import moderaterain from '../components/50655-moderate-rain.json'
+import heavyrain from '../components/50656-heavy-rain.json'
+import sunny from '../components/50649-sunny.json'
 require('datejs');
 
 
@@ -153,6 +156,25 @@ export default function Home({onSearchChange}) {
                         return(
                           <Lottie animationData={patchyrain} style={{width:100}} loop={true}/>
                         )
+                    } else {
+                      if (data.day.condition.code == 1189) {
+                        return(
+                          <Lottie animationData={moderaterain} style={{width:100}} loop={true}/>
+                          )
+                    } else {
+                      if (data.day.condition.code == 1195) {
+                        return(
+                          <Lottie animationData={heavyrain} style={{width:100}} loop={true}/>
+                        )
+                    } else {
+                      if (data.day.condition.code == 1000) {
+                        return(
+                          <Lottie animationData={sunny} style={{width:100}} loop={true}/>
+                        )
+                    }
+
+                    }
+                    }
                       }
                     }
                     
@@ -171,9 +193,6 @@ export default function Home({onSearchChange}) {
               )
             })}
           </SimpleGrid>
-          <Button onClick={()=>{console.log(forecast)}}>
-
-          </Button>
         </Card>
         </Container>
     </div>
